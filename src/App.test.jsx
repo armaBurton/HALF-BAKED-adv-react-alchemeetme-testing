@@ -12,15 +12,15 @@ describe('App', () => {
       </MemoryRouter>
     )
 
-    // screen.getByRole('backgroundColor', { backgroundColor: '#eee' });
+    // screen.getByRole('backgroundColor', { name: '--var-grey' });
 
     screen.getByAltText(/alchemy logo/i);
 
     // screen.getByText(/vonta/i);
-    return waitFor(() => { 
-      const profile = screen.getByText(/vonta/i);
-      expect(profile.textContent).toBe('Vonta');
-    });
+    // return waitFor(() => { 
+      const profile = await screen.findByText(/vonta/i);
+      expect(profile.previousSibling.textContent).toEqual('Meet ');
+    // });
 
   })
 })
